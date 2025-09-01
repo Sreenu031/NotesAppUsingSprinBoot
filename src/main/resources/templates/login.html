@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/signup.js" defer></script>
+</head>
+
+<body>
+    <section>
+        
+        <form action="/req/login" method="post">
+            <h1>Login</h1>
+            <div class="dialog-row">
+                <label th:if="${param.error}" class="text-center redText">Invalid username or password</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="email-outline"></ion-icon>
+                <input name="username" id="username"type="name" required>
+                <label for="username">username</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input name="password" type="password" id="password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="register">
+                <p><a href="#">Forget Password ?</a></p>
+            </div>
+            <button>Log in</button>
+            <div class="register">
+                <p>Don't have a account ?<a href="/req/signup"> Register!!</a></p>
+            </div>
+        </form>
+    </section>
+</body>
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function () {-->
+<!--        const loginForm = document.querySelector('form');-->
+
+<!--        loginForm.addEventListener('submit', function (event) {-->
+<!--            event.preventDefault(); // Prevent the default form submission-->
+
+<!--            const email = document.querySelector('input[name="username"]').value;-->
+<!--            const password = document.querySelector('input[name="password"]').value;-->
+
+<!--            // Create the payload-->
+<!--            const payload = {-->
+<!--                email: email,-->
+<!--                password: password-->
+<!--            };-->
+
+<!--            // Send the data to the /req/login route-->
+<!--            fetch('/req/login', {-->
+<!--                method: 'POST',-->
+<!--                headers: {-->
+<!--                    'Content-Type': 'application/json'-->
+<!--                },-->
+<!--                body: JSON.stringify(payload)-->
+<!--            })-->
+<!--                .then(response => {-->
+<!--                    if (response.ok) {-->
+<!--                        // Redirect to the dashboard or handle success-->
+<!--                        window.location.href = '/dashboard';-->
+<!--                    } else {-->
+<!--                        // Handle error (e.g., show an error message)-->
+<!--                        alert('Invalid email or password');-->
+<!--                    }-->
+<!--                })-->
+<!--                .catch(error => {-->
+<!--                    console.error('Error:', error);-->
+<!--                });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+</html>
+  

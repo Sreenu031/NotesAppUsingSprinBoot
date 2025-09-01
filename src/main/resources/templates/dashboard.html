@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-sticky-note"></i>
+            <span>NotePro</span>
+        </div>
+        <div class="user-info">
+            <div class="avatar">
+                <!-- Placeholder for user avatar -->
+            </div>
+            <h3 class="welcome-message" th:text="'Hi, ' + ${user.userName}">Hi, Username</h3>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li class="active"><i class="fas fa-book"></i> My Notes</li>
+                <li><i class="fas fa-star"></i> Favorites</li>
+                <li><i class="fas fa-archive"></i> Archive</li>
+                <li><i class="fas fa-trash"></i> Trash</li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-header">
+            <h1>My Notes</h1>
+            <button id="add-note-btn" class="btn-primary">
+                <i class="fas fa-plus"></i> Add Note
+            </button>
+        </header>
+
+        <!-- Note Form -->
+        <div id="note-form-container" class="hidden">
+            <div class="note-form">
+                <input type="text" id="note-title" placeholder="Note title" required>
+                <textarea id="note-description" placeholder="Note description..." rows="5" required></textarea>
+                <div class="form-actions">
+                    <button id="save-note-btn" class="btn-primary">Save</button>
+                    <button id="cancel-note-btn" class="btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Container -->
+        <div class="notes-container" id="notes-container">
+            <!-- Notes will be loaded dynamically here -->
+            <div class="no-notes-message" id="no-notes-message">
+                <i class="fas fa-sticky-note"></i>
+                <p>No notes yet. Click "Add Note" to create your first note.</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script th:src="@{/js/dashboard.js}"></script>
+</body>
+</html>
